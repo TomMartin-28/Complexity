@@ -55,6 +55,9 @@ public class RandomGraphe extends Graphe {
         }
     }*/
 
+    /**
+     * Ne fonctionne pas
+     */
     public RandomGraphe(int n, int m){
         double deuxParmisN = ((n * (n - 1)) / 2);
         int[][] bijections = bijection((int)deuxParmisN);
@@ -64,7 +67,7 @@ public class RandomGraphe extends Graphe {
         for (int i = 0; i < m-1; i++) {
             int r = (int) (Math.random() * (deuxParmisN - i + 1) + i);
             Arc Ar = new Arc(getNoeud(bijections[r][0]), getNoeud(bijections[r][1]));
-            if(getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar))
+            //if(getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar))
         }
     }
 
