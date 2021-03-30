@@ -3,12 +3,10 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Graphe {
     private LinkedList<Noeud> noeuds;
@@ -276,7 +274,84 @@ public class Graphe {
         this.noeuds = noeuds;
     }
 
+    public void DSatur(){
+        int[] colorList = new int[this.getNoeuds().size()];
+        List<Pair> listDegrees = NodeDegrees();
+        System.out.println(listDegrees);
+        listDegrees.get(0).first.color = 1;
+        colorList[listDegrees.get(0).first.getId()] = 1;
+    }
+
+    /**
+     *
+     * @return a list of pairs of nodes with their degrees (number of link with others nodes)
+     */
+    private List<Pair> NodeDegrees(){
+        ArrayList<Pair> list = new ArrayList<>();
+        for (Noeud n: noeuds) {
+            int num = n.getSuccesseurs().size();
+            list.add(new Pair(n, num));
+        }
+        Collections.sort(list, Collections.reverseOrder());
+        return list;
+    }
+
+    /**
+     * @return the number of different colors in adjacent nodes
+     */
+    private int DSAT(Noeud n){
+        ArrayList<Integer> list = new ArrayList<>();
+        int res = 0;
+        for (Arc arc: n.getSuccesseurs()) {
+            if(!list.contains(arc.getCible().color)){
+                list.add(arc.getCible().color);
+                res++;
+            }
+        }
+        return res;
+    }
+
     public String toString() {
         return noeuds.toString();
+    }
+
+    private class Pair implements Comparable<Pair>{
+        Noeud first;
+        int second;
+        public Pair(Noeud t1, int t2){
+            first = t1;
+            second = t2;
+        }
+
+        public Noeud getFirst() {
+            return first;
+        }
+
+        public int getSecond() {
+            return second;
+        }
+
+        public void setFirst(Noeud first) {
+            this.first = first;
+        }
+
+        public void setSecond(int second) {
+            this.second = second;
+        }
+
+        @Override
+        public String toString() {
+            return "Pair{" +
+                    "first=" + first.getId() +
+                    ", second=" + second +
+                    '}';
+        }
+
+        @Override
+        public int compareTo(Pair o) {
+            if(second < o.second) return -1;
+            else if(second > o.second) return 1;
+            else return 0;
+        }
     }
 }

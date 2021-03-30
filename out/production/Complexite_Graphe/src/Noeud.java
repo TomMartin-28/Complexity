@@ -1,21 +1,28 @@
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Objects;
 
 public class Noeud {
     private int id;
     private LinkedList<Arc> successeurs = new LinkedList<Arc>();
     private boolean mark;
-    private String profondeur = "";
     public int prof = 0;
-    public Noeud(int id){
+    int color;
+
+    public Noeud(int id) {
         this.id = id;
     }
-    public void setMark(boolean b){mark = b;}
+
+    public void setMark(boolean b) {
+        mark = b;
+    }
+
     public int getId() {
         return id;
     }
-    public boolean getMark(){return mark;}
+
+    public boolean getMark() {
+        return mark;
+    }
+
     public LinkedList<Arc> getSuccesseurs() {
         return successeurs;
     }
@@ -24,19 +31,23 @@ public class Noeud {
         return prof;
     }
 
-    public void setSuccesseurs(LinkedList<Arc> list){ successeurs=list;}
-    public void addProfondeur(int i){
+    public void setSuccesseurs(LinkedList<Arc> list) {
+        successeurs = list;
+    }
+
+    public void addProfondeur(int i) {
         prof += i;
     }
-    public String showProfondeur(){
+
+    public String showProfondeur() {
         StringBuilder str = new StringBuilder();
-        for(int i = 0; i < prof;i++){
+        for (int i = 0; i < prof; i++) {
             str.append("--");
         }
         return str.toString();
     }
 
-    public String toString(){
-        return "Id: "+ id + "\tSuccessors: "+ successeurs + "\n";
+    public String toString() {
+        return "Id: " + id + "\tSuccessors: " + successeurs + "\n";
     }
 }

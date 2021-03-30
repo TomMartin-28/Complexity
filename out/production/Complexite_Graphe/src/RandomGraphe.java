@@ -33,7 +33,7 @@ public class RandomGraphe extends Graphe {
         }
     }
 
-    public RandomGraphe(int n, int m) {
+    /*public RandomGraphe(int n, int m) {
         double deuxParmisN = ((n * (n - 1)) / 2);
         arcs = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -48,25 +48,28 @@ public class RandomGraphe extends Graphe {
                     r = (int) (Math.random() * (deuxParmisN));
 
                     Ar = new Arc(getNoeud(bijections[r][0]), getNoeud(bijections[r][1]));
-                    System.out.println(!getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar));
                 }
                 while (getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar));
                 addArc(bijections[r][0], bijections[r][1]);
             }
         }
+    }*/
 
-    }
-    /*public RandomGraphe(int n, int m){
-        arcs = new ArrayList<>();
+    /**
+     * Ne fonctionne pas
+     */
+    public RandomGraphe(int n, int m){
         double deuxParmisN = ((n * (n - 1)) / 2);
         int[][] bijections = bijection((int)deuxParmisN);
+        for (int i = 0; i < n; i++) {
+            addNoeud(i);
+        }
         for (int i = 0; i < m-1; i++) {
             int r = (int) (Math.random() * (deuxParmisN - i + 1) + i);
-            while(!arcs.contains(new Arc(new Noeud(bijections[r][0]), new Noeud(bijections[r][1])))){
-                arcs.add(new Arc(new Noeud(bijections[r][0]), new Noeud(bijections[r][1])));
-            }
+            Arc Ar = new Arc(getNoeud(bijections[r][0]), getNoeud(bijections[r][1]));
+            //if(getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar))
         }
-    }*/
+    }
 
     private int[][] bijection(int j) {
         int[][] tab = new int[j][2];
