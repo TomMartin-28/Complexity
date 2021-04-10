@@ -278,8 +278,10 @@ public class Graphe {
 
 
     public int MethodeSeq() {
-        int Max = 0;
-        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // 邻接表（Adjacency List）
+        int k = 0;// initialiser k;
+
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // Adjacency List
+
         for (int i = 0; i < getNumNoeud(); ++i){
             Noeud temp = getNoeud(i);
             adj[i] = new LinkedList();
@@ -291,22 +293,22 @@ public class Graphe {
 
         int result[] = new int[getNumNoeud()];
 
-        // 初始化所有未分配的顶点
+        // Initialiser toutes les noeuds
         Arrays.fill(result, -1);
 
-        // 为第一个顶点（vertex）分配第一种颜色
+        // On mets la première couleur pour la première noeud
         result[0] = 0;
 
-        //使用available数组存放所有可以分配的颜色. False
-        //available[cr]的值为false时，表示颜色cr可能已经分配给与它相邻的顶点了
+        // On utilise le tableau pour enregistrer toutes les couleurs disponible
+        // Quand la valeur de available[cr] est false，ca veut dire que la couleur cr s'est occupée par d'autre noeud
         boolean available[] = new boolean[getNumNoeud()];
 
-        // 初始时，所有的颜色都可以使用
+        // En début, toutes les couleurs sont disponible
         Arrays.fill(available, true);
 
-        // 为剩下的  V-1 顶点（vertices）分配颜色
+        // On distribue les couleurs pour les autres (getNumNoeud()-1) noeuds
         for (int u = 1; u < getNumNoeud(); u++) {
-            // 迭代处理所有的邻接点（ adjacent vertices）并且标记他们的颜色为不可用（ unavailable）
+            // Traiter tous les voisins et marquer ses couleurs se sont occupées
             Iterator<Integer> it = adj[u].iterator();
             while (it.hasNext()) {
                 int i = it.next();
@@ -314,27 +316,27 @@ public class Graphe {
                     available[result[i]] = false;
             }
 
-            // 找到第一个可用的颜色（ available color）
+            // Trouver la première couleur qui est disponible
             int cr;
             for (cr = 0; cr < getNumNoeud(); cr++) {
                 if (available[cr])
                     break;
             }
 
-            result[u] = cr; // 赋值
-            if(cr > Max){
-                Max = cr;
+            result[u] = cr; // Donner la valeur
+            if(cr > k){
+                k = cr;
             }
 
-            // 将所有的颜色值为 true并且开始下一次迭代（next iteration）
+            // On reinitialiser toutes les couleur en disponible pour la nouvelle itération
             Arrays.fill(available, true);
         }
 
-        // 输出结果
+        // Printout le résultat
         for (int u = 0; u < getNumNoeud(); u++){
             System.out.println("ID " + u + " --->  Color " + result[u]);
         }
-            return Max+1;
+            return k + 1;
     }
 
 
