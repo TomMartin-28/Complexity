@@ -10,8 +10,16 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
-        Graphe g = new RandomGraphe(15,32);
-        g.export();
+        Graphe g = new RandomGraphe(8,15);
+        //g.export();
+        System.out.println(g.toString());
+        System.out.println(g.MethodeSeq());
+
+
+
+
+
     }
 }

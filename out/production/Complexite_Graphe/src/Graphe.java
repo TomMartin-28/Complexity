@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
+import java.util.Arrays;
+import java.util.Iterator;
+
+
 
 public class Graphe {
     private LinkedList<Noeud> noeuds;
@@ -267,6 +271,73 @@ public class Graphe {
         }
 
     }
+
+    public int getNumNoeud(){
+        return this.noeuds.size();
+    }
+
+
+    public int MethodeSeq() {
+        int Max = 0;
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // 邻接表（Adjacency List）
+        for (int i = 0; i < getNumNoeud(); ++i){
+            Noeud temp = getNoeud(i);
+            adj[i] = new LinkedList();
+            for(int j = 0;j< temp.getSuccesseurs().size();j++) {
+                adj[i].add(temp.getSuccesseurs().get(j).getCible().getId());
+            }
+        }
+
+
+        int result[] = new int[getNumNoeud()];
+
+        // 初始化所有未分配的顶点
+        Arrays.fill(result, -1);
+
+        // 为第一个顶点（vertex）分配第一种颜色
+        result[0] = 0;
+
+        //使用available数组存放所有可以分配的颜色. False
+        //available[cr]的值为false时，表示颜色cr可能已经分配给与它相邻的顶点了
+        boolean available[] = new boolean[getNumNoeud()];
+
+        // 初始时，所有的颜色都可以使用
+        Arrays.fill(available, true);
+
+        // 为剩下的  V-1 顶点（vertices）分配颜色
+        for (int u = 1; u < getNumNoeud(); u++) {
+            // 迭代处理所有的邻接点（ adjacent vertices）并且标记他们的颜色为不可用（ unavailable）
+            Iterator<Integer> it = adj[u].iterator();
+            while (it.hasNext()) {
+                int i = it.next();
+                if (result[i] != -1)
+                    available[result[i]] = false;
+            }
+
+            // 找到第一个可用的颜色（ available color）
+            int cr;
+            for (cr = 0; cr < getNumNoeud(); cr++) {
+                if (available[cr])
+                    break;
+            }
+
+            result[u] = cr; // 赋值
+            if(cr > Max){
+                Max = cr;
+            }
+
+            // 将所有的颜色值为 true并且开始下一次迭代（next iteration）
+            Arrays.fill(available, true);
+        }
+
+        // 输出结果
+        for (int u = 0; u < getNumNoeud(); u++){
+            System.out.println("ID " + u + " --->  Color " + result[u]);
+        }
+            return Max+1;
+    }
+
+
 
     public LinkedList<Noeud> getNoeuds() {
         return noeuds;
