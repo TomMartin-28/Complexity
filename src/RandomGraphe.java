@@ -33,7 +33,7 @@ public class RandomGraphe extends Graphe {
         }
     }
 
-    /*public RandomGraphe(int n, int m) {
+    public RandomGraphe(int n, int m) {
         double deuxParmisN = ((n * (n - 1)) / 2);
         arcs = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -53,12 +53,12 @@ public class RandomGraphe extends Graphe {
                 addArc(bijections[r][0], bijections[r][1]);
             }
         }
-    }*/
+    }
 
     /**
      * Ne fonctionne pas
      */
-    public RandomGraphe(int n, int m){
+    /*public RandomGraphe(int n, int m){
         double deuxParmisN = ((n * (n - 1)) / 2);
         int[][] bijections = bijection((int)deuxParmisN);
         for (int i = 0; i < n; i++) {
@@ -69,7 +69,7 @@ public class RandomGraphe extends Graphe {
             Arc Ar = new Arc(getNoeud(bijections[r][0]), getNoeud(bijections[r][1]));
             //if(getNoeud(bijections[r][0]).getSuccesseurs().contains(Ar))
         }
-    }
+    }*/
 
     private int[][] bijection(int j) {
         int[][] tab = new int[j][2];
