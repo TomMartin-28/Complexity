@@ -341,9 +341,11 @@ public class Graphe {
         }
 
         // 输出结果
+        System.out.println("Original coloring: ");
         for (int u = 0; u < getNumNoeud(); u++){
             System.out.println("ID " + u + " --->  Color " + result[u]);
         }
+
         return Max+1;
     }
 
