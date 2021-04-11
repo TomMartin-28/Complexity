@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class k_Color_Tabu {
     int equal_count = 0; // Counting of equivalent solutions
@@ -224,29 +223,39 @@ public class k_Color_Tabu {
      * @return optimal chromatic number
      */
 
-    public int TabuSearch(){
-        int nb_Test =  4;
+    public int TabuSearch() {
+        int nb_Test = 4;
+        HashMap<Integer, Integer> M = new HashMap<>(); // Save fs of one k
 
-
-        while(iter < nb_Test && k>0){
+        while (iter < nb_Test && k > 0) {
             initial();
-           // System.out.println("Fs initial:"+fs);
+            // System.out.println("Fs initial:"+fs);
             updateACTable();
-           // System.out.println("Second Fs:"+fs);
+            // System.out.println("Second Fs:"+fs);
             caculateFs();
-           // System.out.println("Third Fs: "+fs);
+            // System.out.println("Third Fs: "+fs);
 
-            while(fsTure()) {
-                System.out.println("Current collision number: "+fs);
+            while (fsTure()) {
+                System.out.println("Current collision number: " + fs);
+                M.put(k,fs);
                 findmove();
                 makeMove();
-                iter ++;
+                iter++;
             }
-            nb_Test --;
+            nb_Test--;
             --k;
 
         }
+
+        int minValue = (Collections.min(M.values()));
+        for (Map.Entry<Integer, Integer> entry : M.entrySet()) {  // Itrate through hashmap
+            if (entry.getValue()==minValue) {
+                k = entry.getKey();     // Print the key with max value
+            }
+        }
+
         return k;
+
     }
 
 
