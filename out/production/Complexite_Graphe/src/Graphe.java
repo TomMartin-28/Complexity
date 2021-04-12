@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Graphe {
+
     private LinkedList<Noeud> noeuds;
     private HashMap<Integer, Noeud> hmap;
 
@@ -262,7 +263,9 @@ public class Graphe {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+
 
     public LinkedList<Noeud> getNoeuds() {
         return noeuds;
@@ -275,4 +278,80 @@ public class Graphe {
     public String toString() {
         return noeuds.toString();
     }
+
+
+
+
+    public int getNumNoeud(){
+        return this.noeuds.size();
+    }
+
+
+    public int MethodeSeq() {
+        int Max = 0;
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // 邻接表（Adjacency List）
+        for (int i = 0; i < getNumNoeud(); ++i){
+            Noeud temp = getNoeud(i);
+            adj[i] = new LinkedList();
+            for(int j = 0;j< temp.getSuccesseurs().size();j++) {
+                adj[i].add(temp.getSuccesseurs().get(j).getCible().getId());
+            }
+        }
+
+
+        int result[] = new int[getNumNoeud()];
+
+        // Initialize all unassigned vertices
+        Arrays.fill(result, -1);
+
+        // Assign the first color to the first vertex
+        result[0] = 0;
+
+        //Use the available array to store all the colors that can be assigned. False
+        // The value of available[cr] is false, which means that the color cr may already be assigned to a vertex adjacent to it
+        boolean available[] = new boolean[getNumNoeud()];
+
+        // Initially, all colors are available
+        Arrays.fill(available, true);
+
+        //  Assign colors to the remaining V-1 vertices
+        for (int u = 1; u < getNumNoeud(); u++) {
+            // Iterate through all adjacent vertices and mark their colors as unavailable
+            Iterator<Integer> it = adj[u].iterator();
+            while (it.hasNext()) {
+                int i = it.next();
+                if (result[i] != -1)
+                    available[result[i]] = false;
+            }
+
+            //Find the first available color
+            int cr;
+            for (cr = 0; cr < getNumNoeud(); cr++) {
+                if (available[cr])
+                    break;
+            }
+
+            result[u] = cr; //  Assigning values
+            if(cr > Max){
+                Max = cr;
+            }
+
+            // Set all color values to true and start the next iteration
+            Arrays.fill(available, true);
+        }
+
+        // Output results
+        System.out.println("Original coloring: ");
+        for (int u = 0; u < getNumNoeud(); u++){
+            System.out.println("ID " + u + " --->  Color " + result[u]);
+        }
+
+        return Max+1;
+    }
+
+
+
+
 }
+
+
