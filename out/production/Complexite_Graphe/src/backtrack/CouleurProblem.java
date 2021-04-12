@@ -1,5 +1,12 @@
 package backtrack;
 
+
+import base.Graphe;
+import base.Arc;
+import base.Noeud;
+
+import java.util.LinkedList;
+
 public class CouleurProblem {
     final int S = 4;
     int[] couleur;
@@ -89,6 +96,25 @@ la fonction graphColoringUtil.
             System.out.print(" " + color[i] + " ");
     }
 
+    public int[][] transformation(Graphe g){
+        int[][] graphe = new int[g.getNumNoeud()][g.getNumNoeud()];
+        for(int i = 0 ; i < g.getNumNoeud() ; i++){
+            Noeud node_s = g.getNoeud(i);
+            LinkedList<Arc> arcList = node_s.getSuccesseurs();
+            for(int j = 0 ; j < g.getNumNoeud();j++){
+                if(i==j){
+                    graphe[i][j] = 1;
+                }else{
+                    
+
+                    Noeud node_c = g.getNoeud(j);
+
+                }
+
+            }
+        }
+    }
+
 
     // Test du programme
     public static void main(String args[]) {
@@ -106,6 +132,11 @@ la fonction graphColoringUtil.
                 {0, 1, 1, 1},
                 {1, 1, 1, 1},
         };
+
+
+
+
+
         int m = 3; // Nombre de couleurs
         Coloring.graphColoring(graph, m);
     }
