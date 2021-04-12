@@ -289,7 +289,7 @@ public class Graphe {
 
     public int MethodeSeq() {
         int Max = 0;
-        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // 邻接表（Adjacency List）
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // Adjacency List
         for (int i = 0; i < getNumNoeud(); ++i){
             Noeud temp = getNoeud(i);
             adj[i] = new LinkedList();
