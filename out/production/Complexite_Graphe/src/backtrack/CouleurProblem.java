@@ -5,6 +5,7 @@ import base.Graphe;
 import base.Arc;
 import base.Noeud;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class CouleurProblem {
@@ -62,7 +63,7 @@ ne peut etre attribue ou retourne true and affiche ainsi les couleurs des sommet
 */
 
 
-    boolean graphColoring(int graph[][], int m) {
+    public boolean graphColoring(int graph[][], int m) {
 // Initialise toutes les valeurs de couleurs
 // à 0.
 
@@ -95,24 +96,31 @@ la fonction graphColoringUtil.
             System.out.print(" " + color[i] + " ");
     }
 
-    public int[][] transformation(Graphe g){
+    public int[][] transformation(Graphe g) {
         int[][] graphe = new int[g.getNumNoeud()][g.getNumNoeud()];
-        for(int i = 0 ; i < g.getNumNoeud() ; i++){
+        for (int i = 0; i < g.getNumNoeud(); i++) {
             Noeud node_s = g.getNoeud(i);
             LinkedList<Arc> arcList = node_s.getSuccesseurs();
-            for(int j = 0 ; j < g.getNumNoeud();j++){
-                if(i==j){
+            for (int j = 0; j < g.getNumNoeud(); j++) {
+                if (i == j) {
                     graphe[i][j] = 1;
-                }else{
-                    
-
-                    Noeud node_c = g.getNoeud(j);
-
+                } else {
+                    Iterator<Arc> it = arcList.iterator();
+                    while (it.hasNext()) {
+                        Arc arc = it.next();
+                        if (arc.getCible().getId() == j) {
+                            graphe[i][j] = 1;
+                        } else {
+                            graphe[i][j] = 0;
+                        }
+                    }
                 }
 
             }
         }
+        return graphe;
     }
+
 
 
     // Test du programme

@@ -44,12 +44,11 @@ public class Graphe {
                 int source = 0;
                 int cible = 0;
 
-                if(list.get(i).get(0).compareTo(Integer.toString(i)) == 0){
+               /* if(list.get(i).get(0).compareTo(Integer.toString(i)) == 0){
                         source = i;
-
                 }
 
-               /* for(int b = 0; b<list.size();b++){
+                for(int b = 0; b<list.size();b++){
                     if(list.get(i).get(0).compareTo(Integer.toString(b)) == 0){
                         cible = b;
                     }

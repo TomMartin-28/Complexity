@@ -63,7 +63,7 @@ ne peut etre attribue ou retourne true and affiche ainsi les couleurs des sommet
 */
 
 
-    boolean graphColoring(int graph[][], int m) {
+    public boolean graphColoring(int graph[][], int m) {
 // Initialise toutes les valeurs de couleurs
 // à 0.
 
