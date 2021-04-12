@@ -263,6 +263,7 @@ public class Graphe {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -288,7 +289,7 @@ public class Graphe {
 
     public int MethodeSeq() {
         int Max = 0;
-        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // 邻接表（Adjacency List）
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // Adjacency List
         for (int i = 0; i < getNumNoeud(); ++i){
             Noeud temp = getNoeud(i);
             adj[i] = new LinkedList();
@@ -300,22 +301,22 @@ public class Graphe {
 
         int result[] = new int[getNumNoeud()];
 
-        // 初始化所有未分配的顶点
+        // Initialize all unassigned vertices
         Arrays.fill(result, -1);
 
-        // 为第一个顶点（vertex）分配第一种颜色
+        // Assign the first color to the first vertex
         result[0] = 0;
 
-        //使用available数组存放所有可以分配的颜色. False
-        //available[cr]的值为false时，表示颜色cr可能已经分配给与它相邻的顶点了
+        //Use the available array to store all the colors that can be assigned. False
+        // The value of available[cr] is false, which means that the color cr may already be assigned to a vertex adjacent to it
         boolean available[] = new boolean[getNumNoeud()];
 
-        // 初始时，所有的颜色都可以使用
+        // Initially, all colors are available
         Arrays.fill(available, true);
 
-        // 为剩下的  V-1 顶点（vertices）分配颜色
+        //  Assign colors to the remaining V-1 vertices
         for (int u = 1; u < getNumNoeud(); u++) {
-            // 迭代处理所有的邻接点（ adjacent vertices）并且标记他们的颜色为不可用（ unavailable）
+            // Iterate through all adjacent vertices and mark their colors as unavailable
             Iterator<Integer> it = adj[u].iterator();
             while (it.hasNext()) {
                 int i = it.next();
@@ -323,23 +324,23 @@ public class Graphe {
                     available[result[i]] = false;
             }
 
-            // 找到第一个可用的颜色（ available color）
+            //Find the first available color
             int cr;
             for (cr = 0; cr < getNumNoeud(); cr++) {
                 if (available[cr])
                     break;
             }
 
-            result[u] = cr; // 赋值
+            result[u] = cr; //  Assigning values
             if(cr > Max){
                 Max = cr;
             }
 
-            // 将所有的颜色值为 true并且开始下一次迭代（next iteration）
+            // Set all color values to true and start the next iteration
             Arrays.fill(available, true);
         }
 
-        // 输出结果
+        // Output results
         System.out.println("Original coloring: ");
         for (int u = 0; u < getNumNoeud(); u++){
             System.out.println("ID " + u + " --->  Color " + result[u]);

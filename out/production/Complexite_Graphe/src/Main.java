@@ -12,12 +12,16 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Graphe g = new RandomGraphe(10,  34);
+        long startTime=System.currentTimeMillis();   //Start time
+        Graphe g = new RandomGraphe(10,  0.6);
+      //  Graphe g = new Graphe("Classeur1.csv");
        // g.export();
         System.out.println(g.toString());
-          //System.out.println(g.MethodeSeq());
-
+        //System.out.println(g.MethodeSeq());
         k_Color_Tabu kcT = new k_Color_Tabu(g);
         System.out.println("The best chromatic number is: "+kcT.TabuSearch());
+
+        long endTime=System.currentTimeMillis(); //End time
+        System.out.println("Program run time： "+(endTime-startTime)+"ms");
     }
 }

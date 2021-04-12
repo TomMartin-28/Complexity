@@ -7,7 +7,7 @@ public class k_Color_Tabu {
     int select_vex; // vertex to move
     int select_color; // color to move
     int bestDelt = 10000;
-    int adj_count[] = new int[1000]; // Store the number of adjacent
+    int adj_count[] = new int[10000]; // Store the number of adjacent
 
     int n;
     int k;
@@ -16,7 +16,7 @@ public class k_Color_Tabu {
     int [][] TabuTenure;// table tabu
     int [][] edge; // Relation of vertex
     int [] x; // solutions
-    int[][] vex_adj; // 储存每个节点的邻接节点 voisin
+    int[][] vex_adj; // Store the neighboring nodes of each node
 
     int iter = 0;
 
@@ -109,14 +109,13 @@ public class k_Color_Tabu {
         int a;
         for (int i = 0; i < n; i++) {
             a = (int) (Math.random() * (k));
-            x[i] = a; // i = idN 每个i是一个节点 ，a 是给其上的颜色
+            x[i] = a; // i = idN  Each 'i' is a node and 'a' is the color given to it
         }
     }
 
 
     /**
      Calculate the number of conflict： Fs
-     总冲突数
      */
 
     public void caculateFs(){
@@ -138,10 +137,10 @@ public class k_Color_Tabu {
      */
 
     public void updateACTable(){
-        int [] count = new int[k]; //每个位置是颜色的种类，该位置下的数字是这个颜色出现的次数
+        int [] count = new int[k]; // Each position is the type of color, and the number under that position is the number of times that color appears
         for(int i = 0; i < n; i++){
             int s = 0;
-            int [] store = new int[1000];
+            int [] store = new int[10000];
             for (int j = 0; j < k; j++)
                 count[j] = 0;
             for(int j = 0; j < n ; j++)
@@ -149,12 +148,12 @@ public class k_Color_Tabu {
                     store[s++] = j;
                     for (int h = 0; h < k; h++) {
                         if (x[j] == h)
-                            count[h]++; //h处的颜色数增加
+                            count[h]++; // Increase the number of colors at 'h'
                     }
                 }
             for(int j = 0; j < k; j++)
-                Adjacent_Color_Table[i][j] = count[j]; // i 是 node 的id, j是颜色种类代号。该位置下存的是该节点某种颜色的个数
-                adj_count[i] = s; //储存了每个节点的successeur 个数
+                Adjacent_Color_Table[i][j] = count[j];
+                adj_count[i] = s; // stores the number of successeur for each node
 
             vex_adj[i] = new int[s];
             for (int j = 0; j < s; j++) {
@@ -250,7 +249,7 @@ public class k_Color_Tabu {
         int minValue = (Collections.min(M.values()));
         for (Map.Entry<Integer, Integer> entry : M.entrySet()) {  // Itrate through hashmap
             if (entry.getValue()==minValue) {
-                k = entry.getKey();     // Print the key with max value
+                k = entry.getKey();
             }
         }
 
