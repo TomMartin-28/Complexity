@@ -15,7 +15,6 @@ public class CouleurProblem {
         return true;
     }
 
-
     /* Fonction récursive pour essayer différentes configurations de couleurs */
     boolean graphColoringUtil(int graph[][], int m, int color[], int s) {
         /* Retourne True si tous les sommets ont des couleurs */

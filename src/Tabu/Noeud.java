@@ -1,6 +1,6 @@
+package Tabu;
+
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Objects;
 
 public class Noeud {
     private int id;

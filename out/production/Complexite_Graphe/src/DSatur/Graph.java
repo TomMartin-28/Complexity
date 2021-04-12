@@ -21,6 +21,7 @@ public class Graph {
     public Graph() {
         nodes = new ArrayList<>();
     }
+
     public Graph(String file) throws IOException {
         nodes = new ArrayList<>();
         try (

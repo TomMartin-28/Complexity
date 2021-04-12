@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="commons-csv-1.61">
+    <CLASSES>
+      <root url="jar://D:/eclipse/java-2020-12/someJar/commons-csv-1.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

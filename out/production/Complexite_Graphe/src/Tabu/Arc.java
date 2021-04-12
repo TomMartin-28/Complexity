@@ -1,3 +1,5 @@
+package Tabu;
+
 public class Arc {
     private Noeud source, cible;
     public Arc(Noeud x, Noeud y){

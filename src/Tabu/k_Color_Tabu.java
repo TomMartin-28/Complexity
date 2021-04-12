@@ -1,4 +1,8 @@
-import java.util.*;
+package Tabu;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class k_Color_Tabu {
     int equal_count = 0; // Counting of equivalent solutions
