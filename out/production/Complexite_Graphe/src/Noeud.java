@@ -8,6 +8,7 @@ public class Noeud {
     private boolean mark;
     private String profondeur = "";
     public int prof = 0;
+
     public Noeud(int id){
         this.id = id;
     }
@@ -25,9 +26,11 @@ public class Noeud {
     }
 
     public void setSuccesseurs(LinkedList<Arc> list){ successeurs=list;}
+
     public void addProfondeur(int i){
         prof += i;
     }
+
     public String showProfondeur(){
         StringBuilder str = new StringBuilder();
         for(int i = 0; i < prof;i++){

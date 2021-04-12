@@ -58,7 +58,7 @@ public class RandomGraphe extends Graphe {
     /**
      * Ne fonctionne pas
      */
-    /*public RandomGraphe(int n, int m){
+   /* public RandomGraphe(int n, int m){
         double deuxParmisN = ((n * (n - 1)) / 2);
         int[][] bijections = bijection((int)deuxParmisN);
         for (int i = 0; i < n; i++) {
