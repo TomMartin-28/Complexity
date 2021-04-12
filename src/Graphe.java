@@ -317,7 +317,7 @@ public class Graphe {
         Arrays.fill(available, true);
 
         //  Assign colors to the remaining V-1 vertices
-        for (int u = 1; u <= getNumNoeud(); u++) {
+        for (int u = 1; u < getNumNoeud(); u++) {
             // Iterate through all adjacent vertices and mark their colors as unavailable
             Iterator<Integer> it = adj[u].iterator();
             while (it.hasNext()) {
@@ -344,7 +344,7 @@ public class Graphe {
 
         // Output results
         System.out.println("Original coloring: ");
-        for (int u = 0; u <= getNumNoeud(); u++){
+        for (int u = 0; u < getNumNoeud(); u++){
             System.out.println("ID " + u + " --->  Color " + result[u]);
         }
 

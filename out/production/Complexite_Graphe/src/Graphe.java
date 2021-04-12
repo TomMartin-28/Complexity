@@ -290,8 +290,8 @@ public class Graphe {
 
     public int MethodeSeq() {
         int Max = 0;
-        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()+1]; // Adjacency List
-        for (int i = 1; i <= getNumNoeud(); ++i){
+        LinkedList<Integer> adj[] = new LinkedList[getNumNoeud()]; // Adjacency List
+        for (int i = 0; i < getNumNoeud(); ++i){
             Noeud temp = getNoeud(i);
             adj[i] = new LinkedList();
             for(int j = 0; j < temp.getSuccesseurs().size();j++) {
@@ -301,23 +301,23 @@ public class Graphe {
         }
 
 
-        int result[] = new int[getNumNoeud()+1];
+        int result[] = new int[getNumNoeud()];
 
         // Initialize all unassigned vertices
         Arrays.fill(result, -1);
 
         // Assign the first color to the first vertex
-        result[1] = 0;
+        result[0] = 0;
 
         //Use the available array to store all the colors that can be assigned. False
         // The value of available[cr] is false, which means that the color cr may already be assigned to a vertex adjacent to it
-        boolean available[] = new boolean[getNumNoeud()+1];
+        boolean available[] = new boolean[getNumNoeud()];
 
         // Initially, all colors are available
         Arrays.fill(available, true);
 
         //  Assign colors to the remaining V-1 vertices
-        for (int u = 2; u <= getNumNoeud(); u++) {
+        for (int u = 1; u < getNumNoeud(); u++) {
             // Iterate through all adjacent vertices and mark their colors as unavailable
             Iterator<Integer> it = adj[u].iterator();
             while (it.hasNext()) {
@@ -328,7 +328,7 @@ public class Graphe {
 
             //Find the first available color
             int cr;
-            for (cr = 0; cr <= getNumNoeud(); cr++) {
+            for (cr = 0; cr < getNumNoeud(); cr++) {
                 if (available[cr])
                     break;
             }
@@ -344,7 +344,7 @@ public class Graphe {
 
         // Output results
         System.out.println("Original coloring: ");
-        for (int u = 1; u <= getNumNoeud(); u++){
+        for (int u = 0; u < getNumNoeud(); u++){
             System.out.println("ID " + u + " --->  Color " + result[u]);
         }
 

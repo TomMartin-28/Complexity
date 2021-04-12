@@ -13,8 +13,8 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) throws IOException {
         long startTime=System.currentTimeMillis();   //Start time
-        //Graphe g = new RandomGraphe(10,  0.6);
-        Graphe g = new Graphe("Classeur1.csv");
+        Graphe g = new RandomGraphe(10,  0.6);
+        //Graphe g = new Graphe("Classeur1.csv");
        // g.export();
         System.out.println(g.toString());
         System.out.println(g.MethodeSeq());
