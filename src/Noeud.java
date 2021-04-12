@@ -8,6 +8,8 @@ public class Noeud {
     private boolean mark;
     private String profondeur = "";
     public int prof = 0;
+    int color;
+
     public Noeud(int id){
         this.id = id;
     }

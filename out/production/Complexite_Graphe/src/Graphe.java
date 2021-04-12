@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Graphe {
     private LinkedList<Noeud> noeuds;
@@ -265,7 +262,6 @@ public class Graphe {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public LinkedList<Noeud> getNoeuds() {
