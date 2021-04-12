@@ -109,14 +109,13 @@ public class k_Color_Tabu {
         int a;
         for (int i = 0; i < n; i++) {
             a = (int) (Math.random() * (k));
-            x[i] = a; // i = idN 每个i是一个节点 ，a 是给其上的颜色
+            x[i] = a; // i = idN  Each 'i' is a node and 'a' is the color given to it
         }
     }
 
 
     /**
      Calculate the number of conflict： Fs
-     总冲突数
      */
 
     public void caculateFs(){
@@ -149,7 +148,7 @@ public class k_Color_Tabu {
                     store[s++] = j;
                     for (int h = 0; h < k; h++) {
                         if (x[j] == h)
-                            count[h]++; //h处的颜色数增加
+                            count[h]++; // Increase the number of colors at 'h'
                     }
                 }
             for(int j = 0; j < k; j++)
