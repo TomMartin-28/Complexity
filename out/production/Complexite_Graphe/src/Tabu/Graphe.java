@@ -1,8 +1,13 @@
+package Tabu;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -30,14 +35,26 @@ public class Graphe {
         noeuds = new LinkedList<>();
         hmap = new HashMap<>();
         try (
-                Reader reader = Files.newBufferedReader(Paths.get("Classeur1.csv"));
+                //Reader reader = Files.newBufferedReader(Paths.get("Classeur1.csv"));
+                Reader reader = Files.newBufferedReader(Paths.get("RandomGraphe.csv"));
                 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
         ) {
             List<CSVRecord> list = csvParser.getRecords();
             for (int i = 0; i < list.size(); i++) {
-                int source = -1;
-                int cible = -1;
-                if (i == 0) {
+                int source = 0;
+                int cible = 0;
+
+                if(list.get(i).get(0).compareTo(Integer.toString(i)) == 0){
+                        source = i;
+
+                }
+
+               /* for(int b = 0; b<list.size();b++){
+                    if(list.get(i).get(0).compareTo(Integer.toString(b)) == 0){
+                        cible = b;
+                    }
+                }*/
+               /* if (i == 0) {
                     if (list.get(i).get(0).charAt(1) == '0')
                         source = 0;
                     else if (list.get(i).get(0).charAt(1) == '1')
@@ -100,7 +117,7 @@ public class Graphe {
                 else if (list.get(i).get(1).compareTo("8") == 0)
                     cible = 8;
                 else if (list.get(i).get(1).compareTo("9") == 0)
-                    cible = 9;
+                    cible = 9;*/
 
                 addNoeud(source);
                 addNoeud(cible);
