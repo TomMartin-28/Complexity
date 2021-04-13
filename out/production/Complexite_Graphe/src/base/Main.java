@@ -10,7 +10,7 @@ public class Main {
         Graphe g = new RandomGraphe(10,  0.6);
         //Graphe g = new Graphe("Classeur1.csv");
        // g.export();
-        //System.out.println(g.toString());
+        System.out.println(g.toString());
         //System.out.println(g.MethodeSeq());
         //k_Color_Tabu kcT = new k_Color_Tabu(g);
         //System.out.println("The best chromatic number is: "+kcT.TabuSearch());

@@ -53,7 +53,7 @@ public class Graphe {
                         cible = b;
                     }
                 }*/
-               /* if (i == 0) {
+                if (i == 0) {
                     if (list.get(i).get(0).charAt(1) == '0')
                         source = 0;
                     else if (list.get(i).get(0).charAt(1) == '1')
@@ -116,7 +116,7 @@ public class Graphe {
                 else if (list.get(i).get(1).compareTo("8") == 0)
                     cible = 8;
                 else if (list.get(i).get(1).compareTo("9") == 0)
-                    cible = 9;*/
+                    cible = 9;
 
                 addNoeud(source);
                 addNoeud(cible);

@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class CouleurProblem {
-    final int S = 4;
+    int S = 4;
     int[] couleur;
 
 
@@ -96,7 +96,10 @@ la fonction graphColoringUtil.
             System.out.print(" " + color[i] + " ");
     }
 
+
+
     public int[][] transformation(Graphe g) {
+        S = g.getNoeuds().size();
         int[][] graphe = new int[g.getNumNoeud()][g.getNumNoeud()];
         for (int i = 0; i < g.getNumNoeud(); i++) {
             Noeud node_s = g.getNoeud(i);
@@ -120,6 +123,8 @@ la fonction graphColoringUtil.
         }
         return graphe;
     }
+    
+
 
 
 
