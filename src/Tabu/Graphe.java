@@ -44,6 +44,19 @@ public class Graphe {
                 int source = 0;
                 int cible = 0;
 
+                for(int a = 0 ; a < 1000;a++){
+                    if(list.get(i).get(0).compareTo(String.valueOf(a))==0){
+                        source = a;
+                    }
+                }
+
+                for(int b = 0 ; b < 1000;b++){
+                    if(list.get(i).get(1).compareTo(String.valueOf(b))==0){
+                        cible = b;
+                    }
+                }
+
+
                /* if(list.get(i).get(0).compareTo(Integer.toString(i)) == 0){
                         source = i;
                 }
@@ -53,6 +66,7 @@ public class Graphe {
                         cible = b;
                     }
                 }*/
+                /*
                 if (i == 0) {
                     if (list.get(i).get(0).charAt(1) == '0')
                         source = 0;
@@ -117,6 +131,8 @@ public class Graphe {
                     cible = 8;
                 else if (list.get(i).get(1).compareTo("9") == 0)
                     cible = 9;
+
+                 */
 
                 addNoeud(source);
                 addNoeud(cible);

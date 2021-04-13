@@ -96,6 +96,8 @@ la fonction graphColoringUtil.
             System.out.print(" " + color[i] + " ");
     }
 
+
+
     public int[][] transformation(Graphe g) {
         S = g.getNoeuds().size();
         int[][] graphe = new int[g.getNumNoeud()][g.getNumNoeud()];
@@ -121,6 +123,8 @@ la fonction graphColoringUtil.
         }
         return graphe;
     }
+    
+
 
 
 

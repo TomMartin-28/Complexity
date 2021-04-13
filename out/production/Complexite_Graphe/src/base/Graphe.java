@@ -35,13 +35,26 @@ public class Graphe {
         noeuds = new LinkedList<>();
         hmap = new HashMap<>();
         try (
-                Reader reader = Files.newBufferedReader(Paths.get("Classeur1.csv"));
+                Reader reader = Files.newBufferedReader(Paths.get(file));
                 CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
         ) {
+
             List<CSVRecord> list = csvParser.getRecords();
             for (int i = 0; i < list.size(); i++) {
-                int source = -1;
-                int cible = -1;
+                int source = 0;
+                int cible = 0;
+                for(int a = 0 ; a < 1000;a++){
+                    if(list.get(i).get(0).compareTo(String.valueOf(a))==0){
+                        source = a;
+                    }
+                }
+
+                for(int b = 0 ; b < 1000;b++){
+                    if(list.get(i).get(1).compareTo(String.valueOf(b))==0){
+                        cible = b;
+                    }
+                }
+                /*
                 if (i == 0) {
                     if (list.get(i).get(0).charAt(1) == '0')
                         source = 0;
@@ -107,6 +120,8 @@ public class Graphe {
                 else if (list.get(i).get(1).compareTo("9") == 0)
                     cible = 9;
 
+
+                 */
                 addNoeud(source);
                 addNoeud(cible);
                 addNoeudHMAP(source);
