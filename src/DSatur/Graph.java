@@ -119,8 +119,6 @@ public class Graph {
         return res;
     }
 
-
-
     public boolean addEdge(int a, int b) {
         Node a1 = getNode(a);
         Node b1 = getNode(b);
@@ -129,6 +127,12 @@ public class Graph {
         if (!b1.neighbors.contains(a1))
             b1.neighbors.add(a1);
         return true;
+    }
+
+    public boolean hasEdge(Node a, Node b) {
+        if (a.neighbors.contains(b))
+            return true;
+        else return false;
     }
 
     public void DSatur() {

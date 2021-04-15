@@ -1,7 +1,5 @@
 package base;
 
-import backtrack.CouleurProblem;
-
 import java.io.IOException;
 
 public class Main {
